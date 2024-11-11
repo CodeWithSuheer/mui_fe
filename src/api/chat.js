@@ -39,7 +39,7 @@ export function useGetConversations() {
   const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
 
   const memoizedValue = useMemo(() => {
-    const byId = keyBy(data?.conversations, 'id') || {};
+     const byId = keyBy(data?.conversations || [], 'id');
     const allIds = Object.keys(byId) || [];
 
     return {
